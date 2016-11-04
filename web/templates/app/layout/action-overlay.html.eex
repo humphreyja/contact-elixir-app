@@ -1,0 +1,15 @@
+<div class="actions">
+  <a href="#" onclick="closeOverlay();">
+    <i class="fa fa-times"></i>
+    Close
+  </a>
+</div>
+<div class="contents">
+  <%= render @view_module, @view_template, assigns %>
+</div>
+
+<script type="text/javascript">
+  function closeOverlay() {
+    $("#action-overlay").removeClass("show").html("");
+  }
+</script>

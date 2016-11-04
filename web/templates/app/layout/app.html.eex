@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render "head.html", assigns%>
+  <body>
+    <div>
+      <%= render "header.html", assigns%>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <div class="container main">
+        <div class="sidebar">
+          <%= render "sidebar.html", assigns %>
+        </div>
+        <div class="body">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
+      </div>
+
+      <%= render "footer.html" %>
+    </div> <!-- /container -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script type="text/javascript">
+    $(function() {
+
+      function adjustHeight() {
+          var newHeight = $(window).height() - 54;
+          $('.body').css("minHeight", newHeight);
+
+      }
+
+      $(window).resize(function() {
+          adjustHeight();
+      });
+
+      adjustHeight();
+
+    });
+    </script>
+  </body>
+</html>

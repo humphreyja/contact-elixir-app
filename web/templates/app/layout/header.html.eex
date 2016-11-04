@@ -1,0 +1,46 @@
+<header>
+  <div class="container">
+    <div class="logo">
+      <i class="fa fa-vimeo-square"></i>
+    </div>
+    <div class="search">
+      <form>
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="search box" autocomplete="off" autocorrect="off" spellcheck="false">
+      </form>
+    </div>
+    <div class="controls">
+      <div class="nested">
+        <i class="fa fa-cog"></i>
+        <div>
+          <%= if @current_user do %>
+            <li>
+              Welcome <%= @current_user.name || "" %>
+            </li>
+            <li>
+              <a href="#" id="user-settings" onclick="getSettings();">Settings</a>
+            </li>
+            <li>
+              <i class="fa fa-sign-out"></i><%= link "Logout", to: auth_path(@conn, :logout), method: :delete%>
+            </li>
+          <% else %>
+            <li>
+              <%= if @conn.request_path != auth_path(@conn, :login, "identity") do %>
+                <i class="fa fa-sign-in"></i><%= link "Login", to: auth_path(@conn, :login, "identity")%>
+              <% end %>
+            </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="action-overlay">
+</div>
+
+<script type="text/javascript">
+  function getSettings() {
+    $("#action-overlay").load('<%= user_path(@conn, :edit) %>').addClass("show");
+  }
+</script>

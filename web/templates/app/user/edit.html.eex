@@ -1,0 +1,14 @@
+<h3>Settings</h3>
+<li>
+<%= @current_user.name || "I dont know your name" %>
+</li>
+
+<%= for auth <- @current_user.authorizations do %>
+  <li><%= auth.provider %></li>
+<% end %>
+
+<%= if @conn.request_path != auth_path(@conn, :login, "identity") do %>
+  <li>
+    <%= link "Connect", to: auth_path(@conn, :login, "identity")%>
+  </li>
+<% end %>

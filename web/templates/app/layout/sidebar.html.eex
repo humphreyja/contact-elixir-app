@@ -1,0 +1,23 @@
+<aside>
+  <div class="quick-actions">
+    <ul>
+      <li>
+        <i class="fa fa-home"></i>
+        Home
+        <span>12</span>
+      </li>
+      <li>
+        <i class="fa fa-history"></i>
+        Recent
+      </li>
+      <li>
+        <i class="fa fa-users"></i>
+        Frequent
+      </li>
+    </ul>
+  </div>
+
+  <div class="options">
+
+  </div>
+</aside>

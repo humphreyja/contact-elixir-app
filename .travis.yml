@@ -1,0 +1,21 @@
+sudo: false
+language: elixir
+elixir:
+  - 1.1.0
+otp_release:
+  - 18.0
+env:
+  - MIX_ENV=test
+script:
+  - mix test --exclude expensive
+  - mix test --only expensive
+notifications:
+  email:
+    - jakehumphrey18@gmail.com
+addons:
+  postgresql: "9.4"
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database contact_test;' -U postgres

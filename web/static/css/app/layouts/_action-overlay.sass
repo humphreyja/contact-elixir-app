@@ -1,0 +1,25 @@
+#action-overlay
+  position: absolute
+  background: $primary-color
+  border: 1px solid darken($primary-color, 20%)
+  border-radius: 3px
+  padding: 5px
+  height: 50%
+  width: 50%
+  z-index: 1
+  top: 0
+  bottom: 0
+  right: 0
+  left: 0
+  margin: auto
+  box-shadow: 1px 1px 8px darken($primary-color, 30%)
+  display: none
+
+  &.show
+    display: block
+
+  .actions
+    float: right
+
+    a
+      color: $grey-color
